@@ -1,0 +1,30 @@
+<div style="gap: 0.5em;
+    display: flex;
+    align-items: center;">
+    <a href="{{ url_for('main.user', username=file.user.username) }}" style="display: flex;">
+        <img style="margin-bottom: 0; border-radius:50%;width:32px;height:auto;" src="{{ file.user.avatar() }}" alt="">
+    </a>
+    <h5 style="margin: 0; font-size:14px;">
+        <a href="{{ url_for('main.user', username=file.user.username) }}">{{ file.user.username }}</a> coded <a href="{{url_for('main.detail', filename=file.filename)}}">{{ file.user.username }}/{{ file.title.replace(" ", "_") }}</a> <small style="color:#8a8a8b; margin:0 10px;">{{ moment(file.timestamp).fromNow() }}</small>
+    </h5>
+</div>
+<div class="body" style="padding: 20px;
+    margin: 20px;
+    border: 2px solid #333;
+    border-radius: 20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    background:rgb(27 27 28 / 50%);
+
+">
+    <a href="{{url_for('main.detail', filename=file.filename)}}" style="font-weight: 600; font-size:16px;">{{ file.user.username }}/{{ file.title.replace(" ", "_") }}</a>
+    <cite>{{ file.description }}</cite>
+    <div class="footer" style="display: flex;
+    gap: 30px; font-size: 14px;">
+        <span><i class="fa-brands fa-python"></i> Python</span>
+        <span><i class="fa-solid fa-comment"></i> {{ file.comments|length }} comments</span>
+        <span><i class="fa-regular fa-star"></i> {{file.likes|length}}</span>
+    </div>
+</div>
+<hr style="margin: 30px 0;">
